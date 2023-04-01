@@ -4,7 +4,9 @@ using Workshop;
 public class FrictionFieldController : MonoBehaviour
 {
     [Header("Используем тысячные. Отрицательное значение = замедление, положительное ускорение")]
-    public float multiFriction = -0.5f;
+    [Space(10)]
+    [SerializeField]
+    private float multiFriction = -0.5f;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
