@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79033659f51a4269a4f804d3b19ffa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShooter: {fileID: 0}
+  _player: {fileID: 0}
+  _maxAimDistance: 2
