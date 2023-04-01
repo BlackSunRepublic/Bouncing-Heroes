@@ -8,8 +8,7 @@ using Workshop;
 public class AimSelector : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField]
-    private float _maxAimDistance = 3f;
+    [SerializeField] private float _maxAimDistance = 3f;
 
     private Camera _camera;
     private Vector2 _startAimPoint;
@@ -17,6 +16,7 @@ public class AimSelector : MonoBehaviour
     private Vector2 _endAimPoint;
     private float _distancePower;
     private bool _isPressed = false;
+    private float _powerMultiplier = 0;
 
     void Awake()
     {
@@ -38,7 +38,6 @@ public class AimSelector : MonoBehaviour
                     return;
                 _isPressed = true;
                 StartAim();
-
             }
         }
 
@@ -62,7 +61,13 @@ public class AimSelector : MonoBehaviour
 
     private void StalkAim()
     {
+        DrawLine(_startAimPoint, _player.transform.position);
+        PullPlayer();
+        RotatePlayer();
+    }
 
+    private void PullPlayer()
+    {
         Vector2 mousePos =  _camera.ScreenToWorldPoint(Input.mousePosition);
         if (Vector2.Distance(mousePos, _startAimPoint) > _maxAimDistance)
         {
@@ -73,9 +78,20 @@ public class AimSelector : MonoBehaviour
             _player.transform.position = mousePos;
         }
 
-        DrawLine(_startAimPoint, _player.transform.position);
+        _powerMultiplier = Mathf.Lerp(0, _maxAimDistance, Vector2.Distance(mousePos, _startAimPoint));
+
         var tempDir = _startAimPoint - mousePos;
         Debug.DrawRay(_startAimPoint, tempDir, Color.red);
+    }
+
+    private void RotatePlayer()
+    {
+        Vector2 playerPos = _player.transform.position;
+        Vector2 direction = playerPos - _startAimPoint;
+        // var angle = Mathf.Atan2 (direction.x, direction.y) * Mathf.Rad2Deg;
+        // _player.transform. rotation = Quaternion.AngleAxis (angle, Vector3. forward);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        _player.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void DrawLine(Vector2 startPoint, Vector2 endPoint)
@@ -88,7 +104,7 @@ public class AimSelector : MonoBehaviour
         _endAimPoint =  _camera.ScreenToWorldPoint(Input.mousePosition);
         var dir = (_startAimPoint - _endAimPoint);
         // Debug.Log("direction = " + dir);
-        _player.Shoot(dir, 1);
+        _player.Shoot(dir, _powerMultiplier);
     }
 
 }

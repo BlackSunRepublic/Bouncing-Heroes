@@ -5,6 +5,8 @@ namespace Workshop
 {
     public class PlayerMover : MonoBehaviour
     {
+        [SerializeField] private float _maxPowerOfShoot = 3f;
+
         public event Action OnStop;
 
         private Rigidbody2D _rigidbody2D;
@@ -35,7 +37,7 @@ namespace Workshop
         {
             _rigidbody2D.velocity = Vector2.zero;
             var inverseDir = new Vector2(direction.x, direction.y).normalized;
-            _rigidbody2D.AddForce(inverseDir * 5, ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(inverseDir * (_maxPowerOfShoot * power), ForceMode2D.Impulse);
         }
 
         public void StopToReadyToShoot()
