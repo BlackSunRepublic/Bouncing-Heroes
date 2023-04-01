@@ -6,7 +6,6 @@ namespace Workshop
     [RequireComponent(typeof(LineRenderer))]
     public class PlayerAimDrawer : MonoBehaviour
     {
-        [SerializeField]
         private LineRenderer _lineRenderer;
 
         private void Awake()
