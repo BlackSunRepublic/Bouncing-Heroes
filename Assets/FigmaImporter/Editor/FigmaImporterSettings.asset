@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad400953b60bd4f46ad225a4161e2df2, type: 3}
+  m_Name: FigmaImporterSettings
+  m_EditorClassIdentifier: 
+  clientCode: JI20y9gFoMfvowoyCnJAQZuVl
+  state: 898355494
+  token: figu_LxddPhRK7ije_Z_2NyAZAdGdz8WJfk2WWckoCUzy
+  url: https://www.figma.com/file/rJ7zBnqoAG7hLlyVOY3UnB/PlayrixHackaton?node-id=3-48&t=8X1iPVncNmiP0Yh9-4
+  rendersPath: Resources/UI
