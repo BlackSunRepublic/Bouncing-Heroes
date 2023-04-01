@@ -72,13 +72,16 @@ public class AimSelector : MonoBehaviour
         if (Vector2.Distance(mousePos, _startAimPoint) > _maxAimDistance)
         {
             _player.transform.position = _startAimPoint + (mousePos - _startAimPoint).normalized * _maxAimDistance;
+            _powerMultiplier = 1;
         }
         else
         {
             _player.transform.position = mousePos;
+            // _powerMultiplier = Mathf.Lerp(0, _maxAimDistance, Vector2.Distance(mousePos, _startAimPoint));
+            _powerMultiplier = Vector2.Distance(mousePos, _startAimPoint)/_maxAimDistance;
         }
 
-        _powerMultiplier = Mathf.Lerp(0, _maxAimDistance, Vector2.Distance(mousePos, _startAimPoint));
+        // _powerMultiplier = Mathf.Lerp(0, _maxAimDistance, Vector2.Distance(mousePos, _startAimPoint));
 
         var tempDir = _startAimPoint - mousePos;
         Debug.DrawRay(_startAimPoint, tempDir, Color.red);
@@ -104,6 +107,7 @@ public class AimSelector : MonoBehaviour
         _endAimPoint =  _camera.ScreenToWorldPoint(Input.mousePosition);
         var dir = (_startAimPoint - _endAimPoint);
         // Debug.Log("direction = " + dir);
+        Debug.Log("_powerMultiplier = " + _powerMultiplier);
         _player.Shoot(dir, _powerMultiplier);
     }
 
