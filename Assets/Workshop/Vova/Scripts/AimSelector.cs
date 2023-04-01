@@ -7,15 +7,16 @@ using Workshop;
 
 public class AimSelector : MonoBehaviour
 {
-    [FormerlySerializedAs("playerMover")] [SerializeField] private PlayerShooter playerShooter;
+    [SerializeField] private Player _player;
+    [SerializeField] private float _maxAimDistance = 3f;
 
     private Camera _camera;
     private Vector2 _startAimPoint;
     private Vector2 _currentAimPoint;
     private Vector2 _endAimPoint;
     private float _distancePower;
-
-    private bool _isPlayerTouched = false;
+    private bool _isPressed = false;
+    private float _powerMultiplier = 0;
 
     void Awake()
     {
@@ -24,60 +25,81 @@ public class AimSelector : MonoBehaviour
 
     void Update()
     {
+        if(_player.IsPlayerMove)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
             {
-                var player = hit.collider.GetComponent<PlayerShooter>();
+                var player = hit.collider.GetComponent<Player>();
                 if(player == null)
                     return;
-                _isPlayerTouched = true;
+                _isPressed = true;
                 StartAim();
-
             }
         }
 
-        if (Input.GetMouseButton(0) && _isPlayerTouched)
+        if (_isPressed)
         {
             StalkAim();
         }
 
-        if (Input.GetMouseButtonUp(0) && _isPlayerTouched)
+        if (Input.GetMouseButtonUp(0) && _isPressed)
         {
+            _isPressed = false;
             EndAim();
-            _isPlayerTouched = false;
         }
 
     }
 
     private void StartAim()
     {
-
-// ShowPoint
-// StartDrawLine
-// GetStartVector2
-        _startAimPoint = playerShooter.transform.position;
+        _startAimPoint = _player.transform.position;
     }
 
     private void StalkAim()
     {
-        Vector2 tempEnd =  _camera.ScreenToWorldPoint(Input.mousePosition);
-        var tempDir = _startAimPoint - tempEnd;
-        Debug.DrawRay(_startAimPoint, tempDir, Color.red, 0.05f, true);
+        DrawLine(_startAimPoint, _player.transform.position);
+        PullPlayer();
+        RotatePlayer();
+    }
+
+    private void PullPlayer()
+    {
+        Vector2 mousePos =  _camera.ScreenToWorldPoint(Input.mousePosition);
+        if (Vector2.Distance(mousePos, _startAimPoint) > _maxAimDistance)
+        {
+            _player.transform.position = _startAimPoint + (mousePos - _startAimPoint).normalized * _maxAimDistance;
+            _powerMultiplier = 1;
+        }
+        else
+        {
+            _player.transform.position = mousePos;
+            _powerMultiplier = Vector2.Distance(mousePos, _startAimPoint)/_maxAimDistance;
+        }
+
+        var tempDir = _startAimPoint - mousePos;
+        Debug.DrawRay(_startAimPoint, tempDir, Color.red);
+    }
+
+    private void RotatePlayer()
+    {
+        Vector2 direction = (_startAimPoint - (Vector2)_player.transform.position).normalized;
+        _player.transform.up = direction;
+    }
+
+    private void DrawLine(Vector2 startPoint, Vector2 endPoint)
+    {
+        _player.DrawAimLine(startPoint, endPoint);
     }
 
     private void EndAim()
     {
         _endAimPoint =  _camera.ScreenToWorldPoint(Input.mousePosition);
         var dir = (_startAimPoint - _endAimPoint);
-        Debug.Log("direction = " + dir);
-
-        playerShooter.Shoot(dir, 1);
-//HidePoint
-//GetEndVector2
-//GetDistance
-//
+        _player.Shoot(dir, _powerMultiplier);
     }
 
 }
