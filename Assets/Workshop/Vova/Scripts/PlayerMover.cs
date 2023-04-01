@@ -10,6 +10,7 @@ namespace Workshop
         [SerializeField] private float _maxPowerOfRandomRotation = 1f;
 
         public event Action OnStop;
+        public CoinCounter _coinCounter;
 
         private Rigidbody2D _rigidbody2D;
         private float _baseMultiplier = 1;
@@ -52,6 +53,16 @@ namespace Workshop
         {
             Debug.Log("Collision enter");
             MakeRandomTurn();
+        }
+
+        private void OnTriggerEnter2D(Collider2D colCoin) 
+        {
+            Coin _coin = colCoin.GetComponent<Coin>();
+            if (_coin != null)
+            {
+                _coinCounter.AddCoin();
+                Destroy(colCoin.gameObject);
+            }
         }
 
         //TODO ограничить при минимальной скорости = минимальное вращение
