@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Workshop
@@ -6,12 +7,14 @@ namespace Workshop
     public class PlayerMover : MonoBehaviour
     {
         [SerializeField] private float _maxPowerOfShoot = 3f;
+        [SerializeField] private float _maxPowerOfRandomRotation = 1f;
 
         public event Action OnStop;
 
         private Rigidbody2D _rigidbody2D;
         private float _baseMultiplier = 1;
         private float _currentMultiplier;
+        private int _turnSide = 1;
 
         private void Awake()
         {
@@ -45,5 +48,19 @@ namespace Workshop
             _rigidbody2D.velocity = Vector2.zero;
         }
 
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            Debug.Log("Collision enter");
+            MakeRandomTurn();
+        }
+
+        //TODO ограничить при минимальной скорости = минимальное вращение
+        void MakeRandomTurn()
+        {
+            var turnPower = _rigidbody2D.velocity.magnitude / _maxPowerOfRandomRotation * _turnSide;
+            turnPower = Mathf.Clamp(turnPower, -_maxPowerOfRandomRotation, _maxPowerOfRandomRotation);
+            _rigidbody2D.AddTorque(turnPower, ForceMode2D.Impulse);
+            _turnSide *= -1;
+        }
     }
 }
