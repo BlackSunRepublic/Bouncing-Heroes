@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd038e493324110bb2abad8893f4484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxPowerOfShoot: 6
 --- !u!114 &6514821505506480590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,4 +348,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b98cf98d54464eab9ce7d9346b67c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lineRenderer: {fileID: 0}
