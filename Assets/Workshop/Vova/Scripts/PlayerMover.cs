@@ -1,5 +1,4 @@
 using System;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Workshop
@@ -10,7 +9,6 @@ namespace Workshop
         [SerializeField] private float _maxPowerOfRandomRotation = 1f;
 
         public event Action OnStop;
-        public CoinCounter _coinCounter;
 
         private Rigidbody2D _rigidbody2D;
         private float _baseMultiplier = 1;
@@ -51,25 +49,14 @@ namespace Workshop
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            Debug.Log("Collision enter");
             MakeRandomTurn();
         }
 
-        private void OnTriggerEnter2D(Collider2D colCoin) 
-        {
-            Coin _coin = colCoin.GetComponent<Coin>();
-            if (_coin != null)
-            {
-                _coinCounter.AddCoin();
-                Destroy(colCoin.gameObject);
-            }
-        }
-
-        //TODO ограничить при минимальной скорости = минимальное вращение
         void MakeRandomTurn()
         {
-            var turnPower = _rigidbody2D.velocity.magnitude / _maxPowerOfRandomRotation * _turnSide;
-            turnPower = Mathf.Clamp(turnPower, -_maxPowerOfRandomRotation, _maxPowerOfRandomRotation);
+            var turnPower = Mathf.Sqrt(_rigidbody2D.velocity.magnitude) / 2;
+            turnPower = Mathf.Clamp(turnPower, -_maxPowerOfRandomRotation, _maxPowerOfRandomRotation) * _turnSide;
+            _rigidbody2D.angularVelocity = 0;
             _rigidbody2D.AddTorque(turnPower, ForceMode2D.Impulse);
             _turnSide *= -1;
         }
