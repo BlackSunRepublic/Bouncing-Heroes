@@ -6,6 +6,7 @@ namespace Workshop
     [RequireComponent(typeof(Rigidbody2D), typeof(PlayerMover), typeof(PlayerAimDrawer))]
     public class Player : MonoBehaviour
     {
+        public event Action OnPlayerStop;
         public bool IsPlayerMove { get => _isPlayerMove;
             private set => _isPlayerMove = value;
         }
@@ -41,6 +42,7 @@ namespace Workshop
 
         private void AfterPlayerStop()
         {
+            OnPlayerStop?.Invoke();
             IsPlayerMove = false;
         }
 
