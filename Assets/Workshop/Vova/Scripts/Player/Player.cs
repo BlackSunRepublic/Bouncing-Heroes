@@ -8,19 +8,30 @@ namespace Workshop
     {
         public event Action OnPlayerStop;
         public bool IsPlayerMove { get => _isPlayerMove;
-            private set => _isPlayerMove = value;
+            set => _isPlayerMove = value;
         }
 
         private PlayerAimDrawer _playerAimDrawer;
         private PlayerMover _playerMover;
         private bool _isPlayerMove = false;
+        private Vector2 _startPosition;
+
+        private bool _isLevelFinish = false;
+
 
         private void Awake()
         {
+            _startPosition = transform.position;
+
             _playerMover = GetComponent<PlayerMover>();
             _playerAimDrawer = GetComponent<PlayerAimDrawer>();
 
             _playerMover.OnStop += AfterPlayerStop;
+        }
+
+        private void Start()
+        {
+            GameManager.instance.SetPlayerFromLevel(this);
         }
 
         public void Shoot(Vector2 direction, float power)
@@ -43,7 +54,6 @@ namespace Workshop
         private void AfterPlayerStop()
         {
             OnPlayerStop?.Invoke();
-            IsPlayerMove = false;
         }
 
         private void OnDestroy()
