@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Workshop/Sasha M/Level_8.unity
     guid: 7fd5d73be223cd04d89bb481b4c20ab7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Workshop/Sasha M/Level_9.unity
     guid: 60e5ea6bd7e46b947a5fa1834efeb157
   m_configObjects: {}
