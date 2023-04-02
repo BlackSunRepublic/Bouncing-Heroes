@@ -5,7 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_1.unity
+    guid: fb9d196a9ec13724dac00194832de486
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_2.unity
+    guid: 179cd895cffb3c14fa89e19a68275d63
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_3.unity
+    guid: cec83b919ffd2ca4bad72519d0bd1ed9
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_4.unity
+    guid: ef93b754d3d22f543bf3b6c5a8d78e14
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_5.unity
+    guid: 47060936fe8509a4fbd6ad7dd814bb39
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_6.unity
+    guid: 861873ccafda3a94cae93189ac1c3d83
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_7.unity
+    guid: d7ad95458165886418b3870612264549
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_8.unity
+    guid: 7fd5d73be223cd04d89bb481b4c20ab7
+  - enabled: 1
+    path: Assets/Workshop/Sasha M/Level_9.unity
+    guid: 60e5ea6bd7e46b947a5fa1834efeb157
   m_configObjects: {}

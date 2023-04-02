@@ -33,12 +33,13 @@ public class GameManager : MonoBehaviour
     public void SetPlayerFromLevel(Player player)
     {
         _currentPlayer = player;
-        _currentPlayer.OnPlayerStop += LevelStop;
+        _currentPlayer.OnPlayerStop += LevelFinish;
     }
 
-    private void LevelStop()
-    {
 
+    private void LevelFinish()
+    {
+        Debug.Log("Level Finish");
     }
 
 }
