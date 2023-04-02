@@ -362,7 +362,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -396,6 +396,10 @@ PrefabInstance:
     - target: {fileID: 129121486448698656, guid: a7604da221e60439098721e1d0a31de8, type: 3}
       propertyPath: m_Name
       value: AimController
+      objectReference: {fileID: 0}
+    - target: {fileID: 129121486448698656, guid: a7604da221e60439098721e1d0a31de8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 129121486448698658, guid: a7604da221e60439098721e1d0a31de8, type: 3}
       propertyPath: m_RootOrder
@@ -445,7 +449,8 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1009405187}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 129121486448698659, guid: a7604da221e60439098721e1d0a31de8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7604da221e60439098721e1d0a31de8, type: 3}
 --- !u!1001 &2537838063387781871
 PrefabInstance:
@@ -562,10 +567,6 @@ PrefabInstance:
     - target: {fileID: 7018788891521733356, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7018788891521733359, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
-      propertyPath: multiFriction
-      value: -0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
