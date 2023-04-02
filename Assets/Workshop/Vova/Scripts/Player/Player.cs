@@ -14,13 +14,21 @@ namespace Workshop
         private PlayerAimDrawer _playerAimDrawer;
         private PlayerMover _playerMover;
         private bool _isPlayerMove = false;
+        private Vector2 _startPosition;
 
         private void Awake()
         {
+            _startPosition = transform.position;
+
             _playerMover = GetComponent<PlayerMover>();
             _playerAimDrawer = GetComponent<PlayerAimDrawer>();
 
             _playerMover.OnStop += AfterPlayerStop;
+        }
+
+        private void Start()
+        {
+            GameManager.instance.SetPlayerFromLevel(this);
         }
 
         public void Shoot(Vector2 direction, float power)

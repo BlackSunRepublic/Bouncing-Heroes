@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6514821505506480590}
   - component: {fileID: 5821486408247843424}
   - component: {fileID: 1298769578}
+  - component: {fileID: 1298769579}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,3 +303,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2537838064124553196}
   _maxAimDistance: 2
+--- !u!114 &1298769579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537838064124553199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d5cac552e6407790e326e512ab0ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
