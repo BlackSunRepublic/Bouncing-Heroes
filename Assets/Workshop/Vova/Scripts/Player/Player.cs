@@ -21,6 +21,7 @@ namespace Workshop
 
         private void Awake()
         {
+            IsPlayerMove = false;
             _startPosition = transform.position;
 
             _playerMover = GetComponent<PlayerMover>();
