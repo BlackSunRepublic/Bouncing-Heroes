@@ -13,7 +13,7 @@ namespace Workshop
             if (_coin != null)
             {
                 _coinCounter.AddCoin();
-                Destroy(colCoin.gameObject);
+                Destroy(colCoin.gameObject, 0.1f);
             }
         }
     }
