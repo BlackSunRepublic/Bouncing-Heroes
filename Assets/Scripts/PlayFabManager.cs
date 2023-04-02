@@ -13,10 +13,10 @@ public class PlayFabManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Login();
+        // Login();
     }
 
-    void Login()
+    public void Login()
     {
         var request = new LoginWithCustomIDRequest
         {
@@ -68,12 +68,12 @@ public class PlayFabManager : MonoBehaviour
     }
 
     void OnLeaderboardGet(GetLeaderboardResult result)
-    {      
+    {
         foreach (Transform item in stringParent)
         {
             Destroy(item.gameObject);
         }
-        
+
         foreach (var item in result.Leaderboard)
         {
             GameObject newGo = Instantiate(stringPrefab, stringParent);

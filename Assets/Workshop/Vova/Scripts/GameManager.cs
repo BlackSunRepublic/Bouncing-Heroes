@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         UpdateUIStartScene();
-        Invoke(nameof(SendToLeaderBoard), 2f);
+        // Invoke(nameof(SendToLeaderBoard), 4f);
     }
 
     public void StartLevel(int index)
@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour
         {
             index = _levelsData.Count;
         }
+
+        Ligin();
+        Invoke(nameof(SendToLeaderBoard), 3f);
         SceneManager.LoadScene(index);
     }
 
@@ -110,6 +113,8 @@ public class GameManager : MonoBehaviour
 
     public void StartCurrentLevel()
     {
+        Ligin();
+        Invoke(nameof(SendToLeaderBoard), 4f);
         //TODO check is level exist in LevelData !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         _uiInGameObject.SetActive(true);
         _winPanel.SetActive(false);
@@ -185,6 +190,11 @@ public class GameManager : MonoBehaviour
     {
         int result = GetAllCoinsCountFromAllLevels() * _multiplierCoinsToScore;
         gameObject.GetComponent<PlayFabManager>().SendLeaderboard(result);
+    }
+
+    public void Ligin()
+    {
+        gameObject.GetComponent<PlayFabManager>().Login();
     }
 
     public void IncreaseCurrentLevelNumber()
