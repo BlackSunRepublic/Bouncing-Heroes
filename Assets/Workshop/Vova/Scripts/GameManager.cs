@@ -38,8 +38,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _textInLevelWinPanelGlobalScore;
 
-
-
     private Player _currentPlayer;
 
     [SerializeField]
@@ -75,6 +73,10 @@ public class GameManager : MonoBehaviour
         mainMenuObject.SetActive(false);
         _winPanel.SetActive(false);
         CleanInPlayUi();
+        if (_levelsData.Count < index)
+        {
+            index = _levelsData.Count;
+        }
         SceneManager.LoadScene(index);
     }
 
@@ -183,6 +185,15 @@ public class GameManager : MonoBehaviour
     {
         int result = GetAllCoinsCountFromAllLevels() * _multiplierCoinsToScore;
         gameObject.GetComponent<PlayFabManager>().SendLeaderboard(result);
+    }
+
+    public void IncreaseCurrentLevelNumber()
+    {
+        _currentGameLevelNumberNotIndex++;
+        if (_levelsData.Count <= _currentGameLevelNumberNotIndex)
+        {
+            _currentGameLevelNumberNotIndex = _levelsData.Count;
+        }
     }
 
 }
