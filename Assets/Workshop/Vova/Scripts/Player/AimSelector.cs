@@ -30,7 +30,7 @@ public class AimSelector : MonoBehaviour
         if(_player.IsPlayerMove)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
@@ -48,7 +48,7 @@ public class AimSelector : MonoBehaviour
             StalkAim();
         }
 
-        if (Input.GetMouseButtonUp(0) && _isPressed)
+        if (Input.GetKeyUp(KeyCode.Mouse0) && _isPressed)
         {
             _isPressed = false;
             EndAim();
