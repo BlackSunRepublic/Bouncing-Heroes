@@ -54,7 +54,7 @@ namespace Workshop
 
         void MakeRandomTurn()
         {
-            var turnPower = Mathf.Sqrt(_rigidbody2D.velocity.magnitude) / 2;
+            var turnPower = Mathf.Sqrt(_rigidbody2D.velocity.magnitude) / 3;
             turnPower = Mathf.Clamp(turnPower, -_maxPowerOfRandomRotation, _maxPowerOfRandomRotation) * _turnSide;
             _rigidbody2D.angularVelocity = 0;
             _rigidbody2D.AddTorque(turnPower, ForceMode2D.Impulse);
