@@ -79,9 +79,6 @@ public class AimSelector : MonoBehaviour
             _player.transform.position = mousePos;
             _powerMultiplier = Vector2.Distance(mousePos, _startAimPoint)/_maxAimDistance;
         }
-
-        var tempDir = _startAimPoint - mousePos;
-        Debug.DrawRay(_startAimPoint, tempDir, Color.red);
     }
 
     private void RotatePlayer()
@@ -93,6 +90,10 @@ public class AimSelector : MonoBehaviour
     private void DrawLine(Vector2 startPoint, Vector2 endPoint)
     {
         _player.DrawAimLine(startPoint, endPoint);
+
+        Vector2 mousePos =  _camera.ScreenToWorldPoint(Input.mousePosition);
+        var tempDir = _startAimPoint - mousePos;
+        Debug.DrawRay(_startAimPoint, tempDir, Color.red);
     }
 
     private void EndAim()
