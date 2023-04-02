@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace Workshop
 {
+    [RequireComponent(typeof(Player))]
     public class PlayerMover : MonoBehaviour
     {
         [SerializeField] private float _maxPowerOfShoot = 3f;
         [SerializeField] private float _maxPowerOfRandomRotation = 1f;
-        [SerializeField] private Player _player;
+        private Player _player;
 
         public event Action OnStop;
 

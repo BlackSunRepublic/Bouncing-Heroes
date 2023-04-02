@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Workshop;
 
+[RequireComponent(typeof(Player))]
 public class AimSelector : MonoBehaviour
 {
     [SerializeField] private Player _player;
@@ -20,6 +21,7 @@ public class AimSelector : MonoBehaviour
 
     void Awake()
     {
+        _player = GetComponent<Player>();
         _camera = Camera.main;
     }
 
