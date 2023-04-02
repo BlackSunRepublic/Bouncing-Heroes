@@ -78,7 +78,7 @@ public class PlayFabManager : MonoBehaviour
         {
             GameObject newGo = Instantiate(stringPrefab, stringParent);
             Text[] texts = newGo.GetComponentsInChildren<Text>();
-            texts[0].text = (item.Position + 1).ToString();
+            texts[0].text = item.Position.ToString();
             texts[1].text = item.PlayFabId;
             texts[2].text = item.StatValue.ToString();
 
