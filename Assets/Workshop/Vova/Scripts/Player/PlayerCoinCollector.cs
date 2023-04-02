@@ -10,7 +10,7 @@ namespace Workshop
             if (_coin != null)
             {
                 GameManager.instance.AddCoins();
-                Destroy(colCoin.gameObject);
+                Destroy(colCoin.gameObject, 0.1f);
             }
         }
     }
