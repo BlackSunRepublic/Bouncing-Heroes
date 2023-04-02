@@ -7,6 +7,7 @@ namespace Workshop
     {
         [SerializeField] private float _maxPowerOfShoot = 3f;
         [SerializeField] private float _maxPowerOfRandomRotation = 1f;
+        [SerializeField] private Player _player;
 
         public event Action OnStop;
 
@@ -17,16 +18,22 @@ namespace Workshop
 
         private void Awake()
         {
+            _player = GetComponent<Player>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _currentMultiplier = _baseMultiplier;
         }
 
         private void Update()
         {
+            if(!_player.IsPlayerMove)
+                return;
             _rigidbody2D.velocity *= _currentMultiplier;
             if (_rigidbody2D.velocity.magnitude < 0.1)
             {
                 OnStop?.Invoke();
+                _rigidbody2D.angularDrag = 1;
+                _rigidbody2D.velocity = Vector2.zero;
+                _player.IsPlayerMove = false;
             }
         }
 
