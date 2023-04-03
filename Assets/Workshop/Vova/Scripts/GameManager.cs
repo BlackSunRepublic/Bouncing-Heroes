@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Workshop;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,9 +46,12 @@ public class GameManager : MonoBehaviour
 
 
 
+
+
+
+
     void Awake()
     {
-
         DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
@@ -63,7 +67,11 @@ public class GameManager : MonoBehaviour
     {
         UpdateUIStartScene();
         // Invoke(nameof(SendToLeaderBoard), 4f);
+
+        // Debug.Log(GenerateIDString());
     }
+
+
 
     public void StartLevel(int index)
     {

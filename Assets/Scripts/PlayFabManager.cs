@@ -9,22 +9,41 @@ public class PlayFabManager : MonoBehaviour
 {
     public GameObject stringPrefab;
     public Transform stringParent;
+    [SerializeField] private int maxCharAmount = 17;
+
+    [SerializeField] private int minCharAmount = 15;
+
+    const string glyphs= "abcdefghijklmnopqrstuvwxyz0123456789";
+
+    private string IDstring = "";
 
     // Start is called before the first frame update
     void Start()
     {
-        // Login();
+        IDstring = GenerateIDString();
     }
 
     public void Login()
     {
         var request = new LoginWithCustomIDRequest
         {
-            CustomId = SystemInfo.deviceUniqueIdentifier,
+            CustomId = IDstring,
             CreateAccount = true
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
     }
+
+    private string GenerateIDString()
+    {
+        string result = "";
+        int charAmount = Random.Range(minCharAmount, maxCharAmount); //set those to the minimum and maximum length of your string
+        for(int i=0; i<charAmount; i++)
+        {
+            result += glyphs[Random.Range(0, glyphs.Length)];
+        }
+        return result;
+    }
+
     void OnSuccess(LoginResult result)
     {
         Debug.Log("Successful login/account create!");

@@ -24,7 +24,7 @@ namespace Workshop
             _currentMultiplier = _baseMultiplier;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if(!_player.IsPlayerMove)
                 return;
