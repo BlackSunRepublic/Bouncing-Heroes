@@ -45,11 +45,6 @@ public class GameManager : MonoBehaviour
     private int _multiplierCoinsToScore = 20;
 
 
-
-
-
-
-
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -66,17 +61,12 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         UpdateUIStartScene();
-        // Invoke(nameof(SendToLeaderBoard), 4f);
-
-        // Debug.Log(GenerateIDString());
     }
 
 
 
     public void StartLevel(int index)
     {
-        //TODO check is level exist in LevelData !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         _uiInGameObject.SetActive(true);
         mainMenuObject.SetActive(false);
         _winPanel.SetActive(false);
@@ -102,7 +92,6 @@ public class GameManager : MonoBehaviour
     {
         _winPanel.SetActive(true);
         _playUI.SetActive(false);
-        //TODO Update UI pnanel
         AddToLevelDataResultOfLevel();
         UpdateUiInWinPanel();
         Debug.Log("Level Finish");
@@ -123,7 +112,6 @@ public class GameManager : MonoBehaviour
     {
         Ligin();
         Invoke(nameof(SendToLeaderBoard), 4f);
-        //TODO check is level exist in LevelData !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         _uiInGameObject.SetActive(true);
         _winPanel.SetActive(false);
         //TODO Clean ALL UI

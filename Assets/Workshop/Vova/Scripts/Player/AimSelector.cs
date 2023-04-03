@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -32,7 +33,8 @@ public class AimSelector : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            //RaycastAll ??
+            RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero/*, Mathf.Infinity, 0*/);
             if (hit.collider != null)
             {
                 var player = hit.collider.GetComponent<Player>();

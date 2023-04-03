@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5540987725885924138, guid: 08282ae2e602b4c859a792297e878ff1, type: 3}
+      propertyPath: _currentGameLevelNumberNotIndex
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08282ae2e602b4c859a792297e878ff1, type: 3}
 --- !u!1001 &220245259
@@ -382,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7018788891521733353, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.526873
+      value: 22.211805
       objectReference: {fileID: 0}
     - target: {fileID: 7018788891521733353, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
       propertyPath: m_LocalPosition.x
@@ -390,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7018788891521733353, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2874
+      value: 0.945
       objectReference: {fileID: 0}
     - target: {fileID: 7018788891521733353, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
       propertyPath: m_LocalPosition.z
@@ -428,9 +432,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrictionBox
       objectReference: {fileID: 0}
+    - target: {fileID: 7018788891521733356, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018788891521733358, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7018788891521733359, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}
       propertyPath: multiFriction
-      value: -0.0003
+      value: -0.005
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f80af006cc074b87892cca6b2ac2f80, type: 3}

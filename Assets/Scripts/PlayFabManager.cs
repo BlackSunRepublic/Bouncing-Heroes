@@ -25,12 +25,14 @@ public class PlayFabManager : MonoBehaviour
 
     public void Login()
     {
+#if !UNITY_EDITOR
         var request = new LoginWithCustomIDRequest
         {
             CustomId = IDstring,
             CreateAccount = true
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
+#endif
     }
 
     private string GenerateIDString()
@@ -56,6 +58,7 @@ public class PlayFabManager : MonoBehaviour
 
     public void SendLeaderboard(int score)
     {
+#if !UNITY_EDITOR
         var request = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>
@@ -68,6 +71,7 @@ public class PlayFabManager : MonoBehaviour
             }
         };
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnError);
+#endif
     }
 
     void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
